@@ -20,7 +20,7 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_app_home_component__ = __webpack_require__("../../../../../src/app/home/app.home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__block_app_block_component__ = __webpack_require__("../../../../../src/app/block/app.block.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_app_events_component__ = __webpack_require__("../../../../../src/app/events/app.events.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -35,7 +35,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_2__home_app_home_component__["a" /* AppHomeComponent */] },
-    { path: 'block', component: __WEBPACK_IMPORTED_MODULE_3__block_app_block_component__["a" /* AppBlockComponent */] }
+    { path: 'events', component: __WEBPACK_IMPORTED_MODULE_3__events_app_events_component__["a" /* AppEventsComponent */] }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -120,7 +120,10 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AppRoutingModule__ = __webpack_require__("../../../../../src/app/AppRoutingModule.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__nav_bar_app_navbar_component__ = __webpack_require__("../../../../../src/app/nav-bar/app.navbar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__footer_app_footer_component__ = __webpack_require__("../../../../../src/app/footer/app.footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__block_app_block_component__ = __webpack_require__("../../../../../src/app/block/app.block.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_app_events_component__ = __webpack_require__("../../../../../src/app/events/app.events.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_event_service__ = __webpack_require__("../../../../../src/app/events/event.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__log_service__ = __webpack_require__("../../../../../src/app/log.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -128,6 +131,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -148,13 +154,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__home_app_home_component__["a" /* AppHomeComponent */],
             __WEBPACK_IMPORTED_MODULE_5__nav_bar_app_navbar_component__["a" /* AppNavbarComponent */],
             __WEBPACK_IMPORTED_MODULE_6__footer_app_footer_component__["a" /* AppFooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__block_app_block_component__["a" /* AppBlockComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__events_app_events_component__["a" /* AppEventsComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_4__AppRoutingModule__["a" /* AppRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_4__AppRoutingModule__["a" /* AppRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* HttpModule */]
         ],
-        providers: [],
+        providers: [__WEBPACK_IMPORTED_MODULE_8__events_event_service__["a" /* EventService */], __WEBPACK_IMPORTED_MODULE_10__log_service__["a" /* LogService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -163,7 +170,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/block/app.block.component.css":
+/***/ "../../../../../src/app/events/app.events.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -181,41 +188,112 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/block/app.block.component.html":
+/***/ "../../../../../src/app/events/app.events.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Page Header -->\n<header class=\"masthead\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-8 col-md-10 mx-auto\">\n        <div class=\"site-heading-minor\">\n          <h1>Block</h1>\n          <span class=\"subheading\">{{blockName}}</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n"
+module.exports = "<!-- Page Header -->\n<header class=\"masthead\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-8 col-md-10 mx-auto\">\n        <div class=\"site-heading-minor\">\n          <h1>Events</h1>\n          <span class=\"subheading\">{{subTitle}}</span>\n          <div *ngFor=\"let event of events\">\n            <h4>Event: {{event.name}}</h4>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/block/app.block.component.ts":
+/***/ "../../../../../src/app/events/app.events.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppBlockComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_service__ = __webpack_require__("../../../../../src/app/events/event.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppEventsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
-var AppBlockComponent = (function () {
-    function AppBlockComponent() {
-        this.blockName = 'Privada Allen';
+
+var AppEventsComponent = (function () {
+    function AppEventsComponent(eventService) {
+        this.eventService = eventService;
+        this.subTitle = 'Privada Allen';
+        this.events = [];
     }
-    return AppBlockComponent;
+    AppEventsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.eventService.getEvents()
+            .then(function (events) { return _this.events = events; });
+        console.log(this.events);
+    };
+    return AppEventsComponent;
 }());
-AppBlockComponent = __decorate([
+AppEventsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
-        selector: 'app-block',
-        template: __webpack_require__("../../../../../src/app/block/app.block.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/block/app.block.component.css")]
-    })
-], AppBlockComponent);
+        selector: 'app-events',
+        template: __webpack_require__("../../../../../src/app/events/app.events.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/events/app.events.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__event_service__["a" /* EventService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__event_service__["a" /* EventService */]) === "function" && _a || Object])
+], AppEventsComponent);
 
-//# sourceMappingURL=app.block.component.js.map
+var _a;
+//# sourceMappingURL=app.events.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/events/event.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__log_service__ = __webpack_require__("../../../../../src/app/log.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__("../../../../rxjs/add/operator/toPromise.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var EventService = (function () {
+    function EventService(http, logService) {
+        this.http = http;
+        this.logService = logService;
+        this.eventsUrl = 'api/event';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
+    }
+    EventService.prototype.getEvents = function () {
+        return this.http.get(this.eventsUrl)
+            .toPromise()
+            .then(this.getEventsImpl.bind(this))
+            .catch(this.handleError);
+    };
+    EventService.prototype.getEventsImpl = function (response) {
+        this.logService.Log(response.json(), 'Event Service', 'getEventsImpl');
+        return response.json();
+    };
+    EventService.prototype.handleError = function (error) {
+        console.error('Rompiste la internet!!!', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
+    return EventService;
+}());
+EventService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__log_service__["a" /* LogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__log_service__["a" /* LogService */]) === "function" && _b || Object])
+], EventService);
+
+var _a, _b;
+//# sourceMappingURL=event.service.js.map
 
 /***/ }),
 
@@ -326,6 +404,26 @@ AppHomeComponent = __decorate([
 ], AppHomeComponent);
 
 //# sourceMappingURL=app.home.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/log.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogService; });
+var LogService = (function () {
+    function LogService() {
+    }
+    LogService.prototype.Log = function (data, component, method) {
+        console.log('Component: ' + component + '. Method: ' + method);
+        console.log(data);
+        console.log('--------------------------------------------------------');
+    };
+    return LogService;
+}());
+
+//# sourceMappingURL=log.service.js.map
 
 /***/ }),
 

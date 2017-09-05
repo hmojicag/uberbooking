@@ -4,8 +4,11 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading-minor">
-          <h1>Block</h1>
-          <span class="subheading">{{blockName}}</span>
+          <h1>Events</h1>
+          <span class="subheading">{{subTitle}}</span>
+          <div *ngFor="let event of events">
+            <h4>Event: {{event.name}}</h4>
+          </div>
         </div>
       </div>
     </div>

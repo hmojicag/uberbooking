@@ -6,7 +6,10 @@ import { AppHomeComponent } from './home/app.home.component';
 import { AppRoutingModule } from './AppRoutingModule';
 import { AppNavbarComponent } from './nav-bar/app.navbar.component';
 import { AppFooterComponent } from './footer/app.footer.component';
-import { AppBlockComponent } from './block/app.block.component';
+import { AppEventsComponent } from './events/app.events.component';
+import { EventService } from './events/event.service';
+import { HttpModule } from '@angular/http';
+import { LogService } from './log.service';
 
 @NgModule({
   declarations: [
@@ -14,13 +17,14 @@ import { AppBlockComponent } from './block/app.block.component';
     AppHomeComponent,
     AppNavbarComponent,
     AppFooterComponent,
-    AppBlockComponent
+    AppEventsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [EventService, LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

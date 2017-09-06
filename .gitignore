@@ -7,6 +7,9 @@ out-tsc/
 obj/
 bin/
 
+# public folder
+wwwroot
+
 # dependencies
 node_modules/
 

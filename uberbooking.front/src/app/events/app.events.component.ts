@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Event } from './event';
 import { EventService } from './event.service';
 import { colors } from '../../calendar-utils/colors';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent, CalendarEventAction } from 'angular-calendar';
 import { Subject } from 'rxjs/Subject';
 
 import {
@@ -24,6 +24,21 @@ export class AppEventsComponent implements OnInit {
   events: CalendarEvent[] = [];
   refresh: Subject<any> = new Subject();
   activeDayIsOpen: any = true;
+
+  editAction: CalendarEventAction = {
+    label: '<i class="fa fa-fw fa-pencil"></i>',
+    onClick: ({ event }: { event: CalendarEvent }): void => {
+    this.handleEvent('Edited', event);
+    }
+  };
+
+  deleteAction: CalendarEventAction = {
+    label: '<i class="fa fa-fw fa-times"></i>',
+    onClick: ({ event }: { event: CalendarEvent }): void => {
+      this.events = this.events.filter(iEvent => iEvent !== event);
+      this.handleEvent('Deleted', event);
+    }
+  };
 
   constructor(private eventService: EventService) { }
 
@@ -54,20 +69,35 @@ export class AppEventsComponent implements OnInit {
   private onInitImpl(apiEvents: Event[]): Event[] {
     this.apiEvents = apiEvents;
     for (const apiEvent of this.apiEvents) {
-      this.events.push({
-        title: apiEvent.name,
-        start: apiEvent.startTime,
-        end: apiEvent.endTime,
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      });
+      this.events.push(this.parseApiEvent(apiEvent));
     }
     this.refresh.next();
     return apiEvents;
+  }
+
+  private parseApiEvent(apiEvent: Event): CalendarEvent {
+    let calendarEvent: CalendarEvent = {
+      title: apiEvent.name,
+      start: apiEvent.startTime,
+      end: apiEvent.endTime,
+      color: colors[apiEvent.color],
+      draggable: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      }
+    };
+
+    calendarEvent.actions = new Array(0);
+    if (apiEvent.isEditable) {
+      calendarEvent.actions.push(this.editAction);
+    }
+
+    if (apiEvent.isDeletable) {
+      calendarEvent.actions.push(this.deleteAction);
+    }
+
+    return calendarEvent;
   }
 
   refreshView(): void {

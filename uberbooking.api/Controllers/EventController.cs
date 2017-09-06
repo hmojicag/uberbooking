@@ -20,6 +20,8 @@ namespace uberbooking.api.Controllers {
             sampleEvents[0].Id = 0;
             sampleEvents[0].Name = "Piscina Allen - Reservación";
             sampleEvents[0].Description = "John Doe; 8111653420; Allen # 20; john.doe@gmail.com";
+            sampleEvents[0].IsEditable = true;
+            sampleEvents[0].IsDeletable = false;
             sampleEvents[0].Place = new Place() {
                 Id = 10,
                 Name = "Piscina Allen"
@@ -35,6 +37,9 @@ namespace uberbooking.api.Controllers {
             sampleEvents[1].Id = 1;
             sampleEvents[1].Name = "Poda de Cesped - Parque Lineal";
             sampleEvents[1].Description = "Poda de Cesped - Parque Lineal";
+            sampleEvents[1].Color = "blue";
+            sampleEvents[1].IsEditable = false;
+            sampleEvents[1].IsDeletable = true;
             sampleEvents[1].Place = new Place() {
                 Id = 11,
                 Name = "Parque Lineal"

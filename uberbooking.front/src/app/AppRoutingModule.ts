@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppHomeComponent } from './home/app.home.component';
-import { AppBlockComponent } from './block/app.block.component';
+import { AppEventsComponent } from './events/app.events.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: AppHomeComponent },
-  { path: 'block', component: AppBlockComponent }
+  { path: 'events', component: AppEventsComponent }
 ];
 
 @NgModule({

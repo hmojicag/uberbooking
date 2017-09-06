@@ -7,6 +7,8 @@ ng build
 # Go back
 cd -
 # Copy angular app to public folder in .Net Core
+rm -rf uberbooking.api/wwwroot/*
 cp -rf uberbooking.front/dist/* uberbooking.api/wwwroot/
+rm -rf uberbooking.front/dist/*
 cd uberbooking.api
 dotnet run

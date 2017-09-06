@@ -1,12 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CalendarUtilsModule } from '../calendar-utils/module';
 
 import { AppComponent } from './app.component';
 import { AppHomeComponent } from './home/app.home.component';
 import { AppRoutingModule } from './AppRoutingModule';
 import { AppNavbarComponent } from './nav-bar/app.navbar.component';
 import { AppFooterComponent } from './footer/app.footer.component';
-import { AppBlockComponent } from './block/app.block.component';
+import { AppEventsComponent } from './events/app.events.component';
+import { EventService } from './events/event.service';
+import { HttpModule } from '@angular/http';
+import { LogService } from './log.service';
+import { CalendarModule } from 'angular-calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,13 +21,19 @@ import { AppBlockComponent } from './block/app.block.component';
     AppHomeComponent,
     AppNavbarComponent,
     AppFooterComponent,
-    AppBlockComponent
+    AppEventsComponent
   ],
   imports: [
+    CalendarUtilsModule,
+    CommonModule,
+    CalendarModule.forRoot(),
+    BrowserAnimationsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [EventService, LogService],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

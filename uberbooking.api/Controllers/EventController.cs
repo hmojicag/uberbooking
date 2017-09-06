@@ -14,9 +14,6 @@ namespace uberbooking.api.Controllers {
             return sampleEvents;
         }
 
-
-
-
         private static Event[] sampleEvents = new Event[2];
         public EventController() {
             sampleEvents[0] = new Event();

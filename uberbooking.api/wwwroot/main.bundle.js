@@ -115,15 +115,19 @@ AppComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_app_home_component__ = __webpack_require__("../../../../../src/app/home/app.home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AppRoutingModule__ = __webpack_require__("../../../../../src/app/AppRoutingModule.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__nav_bar_app_navbar_component__ = __webpack_require__("../../../../../src/app/nav-bar/app.navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__footer_app_footer_component__ = __webpack_require__("../../../../../src/app/footer/app.footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_app_events_component__ = __webpack_require__("../../../../../src/app/events/app.events.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_event_service__ = __webpack_require__("../../../../../src/app/events/event.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__log_service__ = __webpack_require__("../../../../../src/app/log.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__calendar_utils_module__ = __webpack_require__("../../../../../src/calendar-utils/module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_app_home_component__ = __webpack_require__("../../../../../src/app/home/app.home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__AppRoutingModule__ = __webpack_require__("../../../../../src/app/AppRoutingModule.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nav_bar_app_navbar_component__ = __webpack_require__("../../../../../src/app/nav-bar/app.navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__footer_app_footer_component__ = __webpack_require__("../../../../../src/app/footer/app.footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_app_events_component__ = __webpack_require__("../../../../../src/app/events/app.events.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_event_service__ = __webpack_require__("../../../../../src/app/events/event.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__log_service__ = __webpack_require__("../../../../../src/app/log.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_angular_calendar__ = __webpack_require__("../../../../angular-calendar/dist/esm/src/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -131,6 +135,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -150,19 +158,23 @@ var AppModule = (function () {
 AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_3__home_app_home_component__["a" /* AppHomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__nav_bar_app_navbar_component__["a" /* AppNavbarComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__footer_app_footer_component__["a" /* AppFooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__events_app_events_component__["a" /* AppEventsComponent */]
+            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_5__home_app_home_component__["a" /* AppHomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__nav_bar_app_navbar_component__["a" /* AppNavbarComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__footer_app_footer_component__["a" /* AppFooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__events_app_events_component__["a" /* AppEventsComponent */]
         ],
         imports: [
+            __WEBPACK_IMPORTED_MODULE_3__calendar_utils_module__["a" /* CalendarUtilsModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common__["a" /* CommonModule */],
+            __WEBPACK_IMPORTED_MODULE_13_angular_calendar__["a" /* CalendarModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_14__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_4__AppRoutingModule__["a" /* AppRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* HttpModule */]
+            __WEBPACK_IMPORTED_MODULE_6__AppRoutingModule__["a" /* AppRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_11__angular_http__["a" /* HttpModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_8__events_event_service__["a" /* EventService */], __WEBPACK_IMPORTED_MODULE_10__log_service__["a" /* LogService */]],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_10__events_event_service__["a" /* EventService */], __WEBPACK_IMPORTED_MODULE_12__log_service__["a" /* LogService */]],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]],
     })
 ], AppModule);
 
@@ -178,7 +190,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "h3 {\n  margin: 0 0 10px;\n}\n\npre {\n  background-color: #f5f5f5;\n  padding: 15px;\n}\n", ""]);
 
 // exports
 
@@ -191,7 +203,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/events/app.events.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Page Header -->\n<header class=\"masthead\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-8 col-md-10 mx-auto\">\n        <div class=\"site-heading-minor\">\n          <h1>Events</h1>\n          <span class=\"subheading\">{{subTitle}}</span>\n          <div *ngFor=\"let event of events\">\n            <h4>Event: {{event.name}}</h4>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n"
+module.exports = "<!-- Page Header -->\n<header class=\"masthead\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-8 col-md-10 mx-auto\">\n        <div class=\"site-heading-minor\">\n          <h1>Events</h1>\n          <span class=\"subheading\">{{subTitle}}</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</header>\n\n<!--\n<div class=\"container\">\n    <div *ngFor=\"let event of apiEvents\" class=\"row\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n          <h4 class=\"card-title\">{{event.name}}</h4>\n          <p class=\"card-text\">{{event.description}}</p>\n        </div>\n        <ul class=\"list-group list-group-flush\">\n          <li class=\"list-group-item\">Id: {{event.id}}</li>\n          <li class=\"list-group-item\">Name: {{event.name}}</li>\n          <li class=\"list-group-item\">Description: {{event.description}}</li>\n          <li class=\"list-group-item\">Place: {{event.place.name}}</li>\n          <li class=\"list-group-item\">EventType: {{event.type.name}}</li>\n          <li class=\"list-group-item\">Start Time: {{event.startTime}}</li>\n          <li class=\"list-group-item\">End Time: {{event.endTime}}</li>\n        </ul>\n      </div>\n    </div>\n</div>\n-->\n\n<div class=\"container\">\n  <div class=\"row justify-content-md-center\">\n    <div class=\"col-md-auto\">\n      <app-mwl-calendar-utils-calendar-header\n        [(view)]=\"view\"\n        [(viewDate)]=\"viewDate\">\n      </app-mwl-calendar-utils-calendar-header>\n\n      <div [ngSwitch]=\"view\">\n        <mwl-calendar-month-view\n          *ngSwitchCase=\"'month'\"\n          [viewDate]=\"viewDate\"\n          [events]=\"events\"\n          [refresh]=\"refresh\"\n          [activeDayIsOpen]=\"activeDayIsOpen\"\n          (dayClicked)=\"dayClicked($event.day)\">\n        </mwl-calendar-month-view>\n        <mwl-calendar-week-view\n          *ngSwitchCase=\"'week'\"\n          [viewDate]=\"viewDate\"\n          [events]=\"events\"\n          [refresh]=\"refresh\"\n          (eventClicked)=\"handleEvent('Clicked', $event.event)\">\n        </mwl-calendar-week-view>\n        <mwl-calendar-day-view\n          *ngSwitchCase=\"'day'\"\n          [viewDate]=\"viewDate\"\n          [events]=\"events\"\n          [refresh]=\"refresh\"\n          (eventClicked)=\"handleEvent('Clicked', $event.event)\">\n        </mwl-calendar-day-view>\n      </div>\n    </div>\n  </div>\n</div>\n<button class=\"btn btn-primary\" (click)=\"refreshView()\">Refresh</button>\n"
 
 /***/ }),
 
@@ -201,6 +213,11 @@ module.exports = "<!-- Page Header -->\n<header class=\"masthead\">\n  <div clas
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_service__ = __webpack_require__("../../../../../src/app/events/event.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendar_utils_colors__ = __webpack_require__("../../../../../src/calendar-utils/colors.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_date_fns__ = __webpack_require__("../../../../date-fns/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_date_fns__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppEventsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -213,23 +230,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
 var AppEventsComponent = (function () {
     function AppEventsComponent(eventService) {
         this.eventService = eventService;
-        this.subTitle = 'Privada Allen';
+        this.subTitle = 'Eventos xxx';
+        this.apiEvents = [];
+        this.view = 'month';
+        this.viewDate = new Date();
         this.events = [];
+        this.refresh = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
+        this.activeDayIsOpen = true;
     }
     AppEventsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.eventService.getEvents()
-            .then(function (events) { return _this.events = events; });
-        console.log(this.events);
+        this.eventService.getEvents().then(this.onInitImpl.bind(this));
+    };
+    AppEventsComponent.prototype.dayClicked = function (_a) {
+        var date = _a.date, events = _a.events;
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_date_fns__["isSameMonth"])(date, this.viewDate)) {
+            if ((__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_date_fns__["isSameDay"])(this.viewDate, date) && this.activeDayIsOpen === true) ||
+                events.length === 0) {
+                this.activeDayIsOpen = false;
+            }
+            else {
+                this.activeDayIsOpen = true;
+                this.viewDate = date;
+            }
+        }
+    };
+    AppEventsComponent.prototype.handleEvent = function (action, event) {
+        console.log('handleEvent');
+        //this.modalData = { event, action };
+        //this.modal.open(this.modalContent, { size: 'lg' });
+    };
+    AppEventsComponent.prototype.onInitImpl = function (apiEvents) {
+        this.apiEvents = apiEvents;
+        for (var _i = 0, _a = this.apiEvents; _i < _a.length; _i++) {
+            var apiEvent = _a[_i];
+            this.events.push({
+                title: apiEvent.name,
+                start: apiEvent.startTime,
+                end: apiEvent.endTime,
+                color: __WEBPACK_IMPORTED_MODULE_2__calendar_utils_colors__["a" /* colors */].red,
+                draggable: true,
+                resizable: {
+                    beforeStart: true,
+                    afterEnd: true
+                }
+            });
+        }
+        this.refresh.next();
+        return apiEvents;
+    };
+    AppEventsComponent.prototype.refreshView = function () {
+        this.refresh.next();
     };
     return AppEventsComponent;
 }());
 AppEventsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         selector: 'app-events',
+        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ChangeDetectionStrategy */].OnPush,
         template: __webpack_require__("../../../../../src/app/events/app.events.component.html"),
         styles: [__webpack_require__("../../../../../src/app/events/app.events.component.css")]
     }),
@@ -279,7 +342,15 @@ var EventService = (function () {
     };
     EventService.prototype.getEventsImpl = function (response) {
         this.logService.Log(response.json(), 'Event Service', 'getEventsImpl');
-        return response.json();
+        var apiEvents = response.json();
+        // Stupid Json parser won't parse dates (they will be left as strings)
+        // map all items to parse one by one the Dates
+        apiEvents = apiEvents.map(function (event) {
+            event.startTime = new Date(event.startTime);
+            event.endTime = new Date(event.endTime);
+            return event;
+        });
+        return apiEvents;
     };
     EventService.prototype.handleError = function (error) {
         console.error('Rompiste la internet!!!', error); // for demo purposes only
@@ -479,6 +550,214 @@ AppNavbarComponent = __decorate([
 ], AppNavbarComponent);
 
 //# sourceMappingURL=app.navbar.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/calendar-utils/calendar-header.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarHeaderComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CalendarHeaderComponent = (function () {
+    function CalendarHeaderComponent() {
+        this.locale = 'en';
+        this.viewChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
+        this.viewDateChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
+    }
+    return CalendarHeaderComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", String)
+], CalendarHeaderComponent.prototype, "view", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Object)
+], CalendarHeaderComponent.prototype, "viewDate", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Object)
+], CalendarHeaderComponent.prototype, "locale", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]) === "function" && _a || Object)
+], CalendarHeaderComponent.prototype, "viewChange", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]) === "function" && _b || Object)
+], CalendarHeaderComponent.prototype, "viewDateChange", void 0);
+CalendarHeaderComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
+        selector: 'app-mwl-calendar-utils-calendar-header',
+        template: "\n    <div class=\"row text-center\">\n      <div class=\"col-md-4\">\n        <div class=\"btn-group\">\n          <div\n            class=\"btn btn-primary\"\n            mwlCalendarPreviousView\n            [view]=\"view\"\n            [(viewDate)]=\"viewDate\"\n            (viewDateChange)=\"viewDateChange.next(viewDate)\">\n            Previous\n          </div>\n          <div\n            class=\"btn btn-outline-secondary\"\n            mwlCalendarToday\n            [(viewDate)]=\"viewDate\"\n            (viewDateChange)=\"viewDateChange.next(viewDate)\">\n            Today\n          </div>\n          <div\n            class=\"btn btn-primary\"\n            mwlCalendarNextView\n            [view]=\"view\"\n            [(viewDate)]=\"viewDate\"\n            (viewDateChange)=\"viewDateChange.next(viewDate)\">\n            Next\n          </div>\n        </div>\n      </div>\n      <div class=\"col-md-4\">\n        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>\n      </div>\n      <div class=\"col-md-4\">\n        <div class=\"btn-group\">\n          <div\n            class=\"btn btn-primary\"\n            (click)=\"viewChange.emit('month')\"\n            [class.active]=\"view === 'month'\">\n            Month\n          </div>\n          <div\n            class=\"btn btn-primary\"\n            (click)=\"viewChange.emit('week')\"\n            [class.active]=\"view === 'week'\">\n            Week\n          </div>\n          <div\n            class=\"btn btn-primary\"\n            (click)=\"viewChange.emit('day')\"\n            [class.active]=\"view === 'day'\">\n            Day\n          </div>\n        </div>\n      </div>\n    </div>\n    <br>\n  "
+    })
+], CalendarHeaderComponent);
+
+var _a, _b;
+//# sourceMappingURL=calendar-header.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/calendar-utils/colors.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return colors; });
+var colors = {
+    red: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3'
+    },
+    blue: {
+        primary: '#1e90ff',
+        secondary: '#D1E8FF'
+    },
+    yellow: {
+        primary: '#e3bc08',
+        secondary: '#FDF1BA'
+    }
+};
+//# sourceMappingURL=colors.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/calendar-utils/date-time-picker.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns__ = __webpack_require__("../../../../date-fns/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_date_fns__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* unused harmony export DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateTimePickerComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR = {
+    provide: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* NG_VALUE_ACCESSOR */],
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* forwardRef */])(function () { return DateTimePickerComponent; }),
+    multi: true
+};
+var DateTimePickerComponent = (function () {
+    function DateTimePickerComponent(cdr) {
+        this.cdr = cdr;
+        this.onChangeCallback = function () { };
+    }
+    DateTimePickerComponent.prototype.writeValue = function (date) {
+        this.date = date;
+        this.dateStruct = {
+            day: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["getDate"])(date),
+            month: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["getMonth"])(date) + 1,
+            year: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["getYear"])(date)
+        };
+        this.timeStruct = {
+            second: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["getSeconds"])(date),
+            minute: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["getMinutes"])(date),
+            hour: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["getHours"])(date)
+        };
+        this.cdr.detectChanges();
+    };
+    DateTimePickerComponent.prototype.registerOnChange = function (fn) {
+        this.onChangeCallback = fn;
+    };
+    DateTimePickerComponent.prototype.registerOnTouched = function (fn) { };
+    DateTimePickerComponent.prototype.updateDate = function () {
+        var newDate = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["setYear"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["setMonth"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["setDate"])(this.date, this.dateStruct.day), this.dateStruct.month - 1), this.dateStruct.year);
+        this.onChangeCallback(newDate);
+    };
+    DateTimePickerComponent.prototype.updateTime = function () {
+        var newDate = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["setHours"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["setMinutes"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["setSeconds"])(this.date, this.timeStruct.second), this.timeStruct.minute), this.timeStruct.hour);
+        this.onChangeCallback(newDate);
+    };
+    return DateTimePickerComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", String)
+], DateTimePickerComponent.prototype, "placeholder", void 0);
+DateTimePickerComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
+        selector: 'app-mwl-calendar-utils-date-time-picker',
+        template: "\n    <form class=\"form-inline\">\n      <div class=\"form-group\">\n        <div class=\"input-group\">\n          <input\n            readonly\n            class=\"form-control\"\n            [placeholder]=\"placeholder\"\n            name=\"date\"\n            [(ngModel)]=\"dateStruct\"\n            (ngModelChange)=\"updateDate()\"\n            ngbDatepicker\n            #datePicker=\"ngbDatepicker\">\n            <div class=\"input-group-addon\" (click)=\"datePicker.toggle()\" >\n              <i class=\"fa fa-calendar\"></i>\n            </div>\n        </div>\n      </div>\n    </form>\n    <ngb-timepicker\n      [(ngModel)]=\"timeStruct\"\n      (ngModelChange)=\"updateTime()\"\n      [meridian]=\"true\">\n    </ngb-timepicker>\n  ",
+        styles: [
+            "\n    .form-group {\n      width: 100%;\n    }\n  "
+        ],
+        providers: [DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Z" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Z" /* ChangeDetectorRef */]) === "function" && _a || Object])
+], DateTimePickerComponent);
+
+var _a;
+//# sourceMappingURL=date-time-picker.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/calendar-utils/module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular_calendar__ = __webpack_require__("../../../../angular-calendar/dist/esm/src/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__calendar_header_component__ = __webpack_require__("../../../../../src/calendar-utils/calendar-header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__date_time_picker_component__ = __webpack_require__("../../../../../src/calendar-utils/date-time-picker.component.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarUtilsModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+var CalendarUtilsModule = (function () {
+    function CalendarUtilsModule() {
+    }
+    return CalendarUtilsModule;
+}());
+CalendarUtilsModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["a" /* NgbDatepickerModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbTimepickerModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_4_angular_calendar__["a" /* CalendarModule */]
+        ],
+        declarations: [__WEBPACK_IMPORTED_MODULE_5__calendar_header_component__["a" /* CalendarHeaderComponent */], __WEBPACK_IMPORTED_MODULE_6__date_time_picker_component__["a" /* DateTimePickerComponent */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_5__calendar_header_component__["a" /* CalendarHeaderComponent */], __WEBPACK_IMPORTED_MODULE_6__date_time_picker_component__["a" /* DateTimePickerComponent */]]
+    })
+], CalendarUtilsModule);
+
+//# sourceMappingURL=module.js.map
 
 /***/ }),
 

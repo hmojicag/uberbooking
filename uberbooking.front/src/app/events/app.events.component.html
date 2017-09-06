@@ -6,11 +6,45 @@
         <div class="site-heading-minor">
           <h1>Events</h1>
           <span class="subheading">{{subTitle}}</span>
-          <div *ngFor="let event of events">
-            <h4>Event: {{event.name}}</h4>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <app-mwl-calendar-utils-calendar-header
+        [(view)]="view"
+        [(viewDate)]="viewDate">
+      </app-mwl-calendar-utils-calendar-header>
+
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view
+          *ngSwitchCase="'month'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          [activeDayIsOpen]="activeDayIsOpen"
+          (dayClicked)="dayClicked($event.day)">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view
+          *ngSwitchCase="'week'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          (eventClicked)="handleEvent('Clicked', $event.event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view
+          *ngSwitchCase="'day'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          (eventClicked)="handleEvent('Clicked', $event.event)">
+        </mwl-calendar-day-view>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary" (click)="refreshView()">Refresh</button>

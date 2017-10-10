@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
 import { Event } from './event';
 import { LogService } from '../log.service';
-import 'rxjs/add/operator/toPromise';
+import { ApiHttpCallerService } from '../api-http-caller.service';
+import {isUndefined} from "util";
 
 @Injectable()
 export class EventService {
-  private eventsUrl = 'api/event';
-  private headers = new Headers({'Content-Type': 'application/json'});
+  // private eventsUrl = 'api/event';
+  private eventsUrl = 'event';
 
-  constructor(private http: Http, private logService: LogService) { }
+  constructor(private logService: LogService,
+              private apiHttpCallerService: ApiHttpCallerService) { }
 
   getEvents(): Promise<Event[]> {
-    return this.http.get(this.eventsUrl)
+    /*return this.http.get(this.eventsUrl)
       .toPromise()
       .then(this.getEventsImpl.bind(this))
-      .catch(this.handleError);
+      .catch(this.handleError);*/
+    let p = this.apiHttpCallerService.HttpGet(this.eventsUrl);
+    let pEvents = null;
+    if (!isUndefined(p)) {
+      pEvents = p.then(this.getEventsImpl.bind(this));
+    }
+
+    return pEvents;
   }
 
   private getEventsImpl(response): Event[] {
@@ -29,11 +37,6 @@ export class EventService {
       return event;
     });
     return apiEvents;
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('Rompiste la internet!!!', error); // for demo purposes only
-    return Promise.reject(error.message || error);
   }
 
 }

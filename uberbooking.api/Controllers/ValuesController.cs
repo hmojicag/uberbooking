@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using uberbooking.api.Common;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace uberbooking.api.Controllers
 {
@@ -17,10 +18,11 @@ namespace uberbooking.api.Controllers
         }
 
         // GET api/values/5
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            return "Jair es chido";
         }
 
         // POST api/values
@@ -40,5 +42,6 @@ namespace uberbooking.api.Controllers
         public void Delete(int id)
         {
         }
+        
     }
 }

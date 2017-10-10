@@ -1,7 +1,9 @@
 ﻿using System;
+using uberbooking.api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using uberbooking.api.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace uberbooking.api.Controllers {
     
@@ -9,6 +11,7 @@ namespace uberbooking.api.Controllers {
     public class EventController : Controller {
         
         // GET api/events
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet]
         public IEnumerable<Event> GetAll() {
             return sampleEvents;

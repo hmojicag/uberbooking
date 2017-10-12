@@ -11,7 +11,7 @@ namespace uberbooking.api.Controllers {
     public class EventController : Controller {
         
         // GET api/events
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet]
         public IEnumerable<Event> GetAll() {
             return sampleEvents;

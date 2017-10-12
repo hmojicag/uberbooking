@@ -15,6 +15,7 @@ import { LogService } from './log.service';
 import { CalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiHttpCallerService } from './api-http-caller.service';
+import { LoginService } from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ApiHttpCallerService } from './api-http-caller.service';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [EventService, LogService, ApiHttpCallerService],
+  providers: [EventService, LogService, ApiHttpCallerService, LoginService],
   bootstrap: [AppComponent],
 
 })

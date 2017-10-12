@@ -62,8 +62,6 @@ export class AppEventsComponent implements OnInit {
 
   handleEvent(action: string, event: CalendarEvent): void {
     console.log('handleEvent');
-    //this.modalData = { event, action };
-    //this.modal.open(this.modalContent, { size: 'lg' });
   }
 
   private onInitImpl(apiEvents: Event[]): Event[] {
@@ -76,7 +74,7 @@ export class AppEventsComponent implements OnInit {
   }
 
   private parseApiEvent(apiEvent: Event): CalendarEvent {
-    let calendarEvent: CalendarEvent = {
+    const calendarEvent: CalendarEvent = {
       title: apiEvent.name,
       start: apiEvent.startTime,
       end: apiEvent.endTime,
